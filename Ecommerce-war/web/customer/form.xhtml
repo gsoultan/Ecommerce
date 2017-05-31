@@ -1,15 +1,95 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
-            <h:inputText value="#{customerBean.customer.firstname}"  />
-            <h:commandButton action="#{customerBean.goToInfo()}" actionListener="#{customerBean.submitCustomer}" />
-        </h:form>
+        <ui:composition template="#{request.contextPath}/layout/default/index.xhtml">
+            <ui:define name="container">
+                <div class="row">
+                <div class="col s12 m12">
+                    <div class="card-panel white">
+                        <div class="section">
+                            <h5 class="teal-text">Customer Info</h5>
+                        </div>
+                        <div class="divider"></div>
+                        <div style="margin-bottom:10px;"></div>
+                        <h:form>
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="input-field">
+                                        <h:inputText required="true" p:placeholder="Your First Name (Mandatory)" id="firstName" value="#{customerBean.customer.firstName}" label="First Name" styleClass="validate" requiredMessage="First Name is required">
+                                            <f:validateLength minimum = "3" maximum = "20" />
+                                        </h:inputText>
+                                       <label for="firstName" class="teal-text">First Name</label>
+                                       <h:message for="firstName" style="color:red" />
+                                    </div>
+                                </div>
+                                <div class="col s12 m6">
+                                    <div class="input-field">
+                                        <h:inputText p:placeholder="Your Last Name" id="lastName" value="#{customerBean.customer.lastName}" label="Last Name" styleClass="validate"  />
+                                       <label for="lastName" class="teal-text">Last Name</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m3">
+                                    <label for="gender" class="teal-text">Gender</label>
+                                    <h:selectOneRadio value="#{customerBean.customer.gender}" id="gender"> 
+                                        <f:selectItem itemValue = "male" itemLabel = "Male" /> 
+                                        <f:selectItem itemValue = "female" itemLabel = "Female" />
+                                    </h:selectOneRadio>  
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="input-field">
+                                        <h:inputText p:placeholder="Your Place of Birth" id="birthPlace" value="#{customerBean.customer.birthPlace}" styleClass="validate"  />
+                                       <label for="birthPlace" class="teal-text">Birth Place</label>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6">
+                                    <div class="input-field">
+                                        <h:inputText required="true" p:placeholder="Your Birth Date" id="birthDate"  value="#{customerBean.customer.birthDate}" styleClass="datepicker" requiredMessage="Birth Date is required">
+                                            <f:convertDateTime pattern="dd-MMM-yyyy" />
+                                        </h:inputText>
+                                       <label for="birthDate" class="teal-text">Birth Date</label>
+                                        <h:message for="birthDate" style="color:red" />
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="input-field">
+                                        <h:inputTextarea id="address" value="#{customerBean.customer.address}" styleClass="materialize-textarea"  />
+                                        <label for="address" class="teal-text">Address</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12">
+                                    <h:commandButton value="Submit" action="#{navigationBean.goToCustomerListForm()}" type="submit"
+                                                     styleClass="btn waves-effect waves-light" actionListener="#{customerBean.submitCustomer}">
+                                    </h:commandButton>
+                                    <span></span>
+                                    <h:commandButton value="Cancel" action="#{navigationBean.goToCustomerListForm()}"
+                                                     styleClass="btn waves-effect waves-light red">
+                                    </h:commandButton>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            </ui:define>
+            
+        </ui:composition>
+       
     </h:body>
 </html>
 

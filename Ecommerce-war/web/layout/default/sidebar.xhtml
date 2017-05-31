@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:body>
+        <ui:composition>
+          <ul id="slide-out" class="side-nav">
+            <li><div class="userView">
+              <div class="background">
+                  <img src="http://materializecss.com/images/office.jpg"/>
+              </div>
+              <a href="#!user"><img class="circle" src="http://materializecss.com/images/office.jpg"/></a>
+              <a href="#!name"><span class="white-text name">Gembit Soultan</span></a>
+              <a href="#!email"><span class="white-text email">gembit.soultan@gmail.com</span></a>
+            </div></li>
+            <li class="no-padding">
+                <ul class="collapsible collapsible-accordion">
+                  <li>
+                    <a class="collapsible-header"><i class="material-icons">group</i>Customers<i class="material-icons right">arrow_drop_down</i></a>
+                    <div class="collapsible-body">
+                      <ul>
+                           <h:form> 
+                        <li>
+                           
+                            <h:commandLink action = "#{navigationBean.goToCustomerInfoForm}" actionListener="#{customerBean.add}">
+                              <i class="material-icons">person_add</i>New Customer
+                              </h:commandLink>
+                  
+                        </li>
+                        <li>
+                
+                            <h:commandLink action="#{navigationBean.goToCustomerListForm}">
+                                      <i class="material-icons">people</i>Customer List
+                                  </h:commandLink>
+                            
+                        </li>
+                      </h:form>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+            </li>
+          </ul>
+          
+        </ui:composition>
+    </h:body>
+
+</html>

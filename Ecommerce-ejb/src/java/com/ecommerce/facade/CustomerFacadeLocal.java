@@ -16,7 +16,7 @@ import javax.ejb.Local;
 @Local
 public interface CustomerFacadeLocal {
 
-    Customer create(Customer customer);
+    void create(Customer customer);
 
     void edit(Customer customer);
 

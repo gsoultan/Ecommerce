@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <title>Ecommerce</title>
+    </h:head>
+
+    <h:body class="grey lighten-2">
+        <div class="container-fluid">
+            <ui:insert name="header">
+                <ui:include src="#{request.contextPath}/layout/default/header.xhtml" />
+            </ui:insert>
+            <ui:insert name="sidebar" >
+                <ui:include src="#{request.contextPath}/layout/default/sidebar.xhtml" />
+            </ui:insert>
+            <div class="container">
+                <ui:insert name="container"></ui:insert>
+            </div>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <h:outputScript name="app.js" library="js" />
+    </h:body>
+
+</html>
